@@ -1,0 +1,23 @@
+
+
+<h1>belal lists</h1>
+<form method="POST" action="/">
+    
+    {% csrf_token %}
+    {{form.title}}
+    <input type="submit" name="create">
+</form>
+{% for task in tasks%}
+<div>
+    <a href="{% url 'update' task.id %}">update</a>
+    <a href="{% url 'delete' task.id %}">Delete</a>
+    <br>
+
+    {% if task.complete == True %}
+    <strike>{{task}}</strike>
+    {% else %}
+    <p>{{ task }}</p>
+    {% endif %}
+</div>
+
+{% endfor %}
